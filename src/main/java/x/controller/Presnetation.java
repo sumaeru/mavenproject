@@ -1,6 +1,8 @@
 package x.controller;
 
-public class Presnetation {
+import x.service.ServiceInterface;
+
+public class Presentation {
 
     private ServiceInterface serviceInterface;  //association
 
