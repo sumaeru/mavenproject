@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- create an object of ADdressBook, create an object of BubbleSort and MergeSort -->
+
+
+    <bean id="ab" class="lc.AddressBook">
+        <constructor-arg ref="ms"/>
+        <!-- <property name="SortingAlgorithm" ref="ms"/>  -->
+     </bean>
+
+    <bean id="bs" class="lc.BubbleSort"/>
+
+    <bean id="ms" class="lc.MergeSort"/>
+
+
+    <!--
+    <bean id="obj3" class="x.Y"/>
+
+
+    <bean id="obj2" class="x.ABC">
+        <property name="s" ref="obj3"/>
+    </bean>
+
+
+    <bean id="obj3" class="x.Y"/>
+
+    <bean id="obj4" class="x.Y"/>
+-->
+
+
+
+
+
+
+</beans>
