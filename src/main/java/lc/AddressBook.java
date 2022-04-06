@@ -8,9 +8,9 @@ public class AddressBook {
 
   //  public void setSortingAlgorithm(SortingAlgorithm sortingAlgorithm) {
 
-    public AddressBook(SortingAlgorithm sortingAlgorithm){
+    public AddressBook(int i){
         System.out.println("sorting algorithm wired");
-        this.sortingAlgorithm = sortingAlgorithm;
+        //this.sortingAlgorithm = sortingAlgorithm;
     }
 
     public void arrangeAddresses() {
