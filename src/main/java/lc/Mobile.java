@@ -8,7 +8,7 @@ public class Mobile {
     public Mobile(Sim sim)
     {
         b =new Battery();  //composition
-        s = sim; // aggregation
+        this.sim = sim; // aggregation
 
     }
 
