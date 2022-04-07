@@ -1,5 +1,7 @@
 package theory_jdbcadventures;
 
+import org.mariadb.jdbc.Driver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,8 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestJDBC {
-	
+
 	public static void main(String[] args) {
+
+
+
+	}
+
+
+	
+	public static void main12(String[] args) {
 
 		
 		Connection con =null;
@@ -38,13 +48,14 @@ public class TestJDBC {
 		
 			stmt.setString(1, location);
 			ResultSet ra =stmt.executeQuery();
-			List<Person> pl =new ArrayList<Person>();
+			List<Person> pl = new ArrayList<>();
 			//since i am using update
 			if( ra.next())
 			{
 			
 				do {
-					Person p = new Person();
+					Person p;
+					p = new Person();
 					p.setPerson_id(ra.getInt("personid"));
 					p.setPname(ra.getString("pname"));
 					p.setLocation(ra.getString("location"));
@@ -77,9 +88,10 @@ public class TestJDBC {
 		
 		
 	}
+
+
 	
-	
-	public static void main4(String[] args) {
+	public static void main13(String[] args) {
 		
 
 		Connection con =null;
@@ -110,12 +122,14 @@ public class TestJDBC {
 			//since i am using update
 			if( ra.next())
 			{
-			
+
 				Person p =new Person();
 				p.setPerson_id(ra.getInt("personid"));
 				p.setPname(ra.getString("pname"));
 				p.setLocation(ra.getString("location"));
 				System.out.println(p);
+
+
 
 				
 			}else
@@ -143,8 +157,10 @@ public class TestJDBC {
 
 		
 	}
+
+
 	
-public static void main3(String[] args) {
+public static void main17(String[] args) {
 		
 		Connection con =null;
 		try {
@@ -205,9 +221,10 @@ public static void main3(String[] args) {
 
 
 
-	
+
 	public static void main2(String[] args) {
-		
+
+
 		Connection con =null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -263,6 +280,9 @@ public static void main3(String[] args) {
 		
 		
 	}
+
+
+
 
 	public static void main1(String[] args) {
 		// TODO Auto-generated method stub

@@ -9,9 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DAOPOC {
-	
-	@Autowired
+public class DAOPOCSpring {
+
+
+   @Autowired
 	private JdbcTemplate t;
 	
 	public void dhc()

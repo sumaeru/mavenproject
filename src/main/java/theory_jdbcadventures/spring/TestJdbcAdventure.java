@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
-@ComponentScan("jdbcadventures.spring")
+@ComponentScan("theory_jdbcadventures.spring")
 public class TestJdbcAdventure {
 	
 	
@@ -16,7 +16,8 @@ public class TestJdbcAdventure {
 	@Bean
 	public JdbcTemplate f1()
 	{
-		
+
+
 		
 		Driver d =new org.mariadb.jdbc.Driver();
 		
@@ -48,7 +49,7 @@ public class TestJdbcAdventure {
 		
 		 AnnotationConfigApplicationContext ac
 		=new AnnotationConfigApplicationContext(TestJdbcAdventure.class);
-		DAOPOC temp=ac.getBean(DAOPOC.class);
+		DAOPOCSpring temp=ac.getBean(DAOPOCSpring.class);
 		//temp.dhc();
 		//temp.add();
 		//temp.update();
