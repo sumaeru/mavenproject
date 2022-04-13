@@ -1,0 +1,502 @@
+today story..
+
+1. service and dao
+2. build a web applicatoin
+3. build a web service and see the difference.
+4. concepts...
+
+yesterday story..
+1. dont touch web if we have a doubt on servcice funtions
+and models.
+2. after we design service function and models , ideally
+better to complete dao and then jump to presentation
+3. we should not get "trouble or struck" during the project
+that prayer has been prayed for a long time and that prayer
+wont be answered.. we will get struck everytime due
+to concept or syntax.
+
+4. to solve the syntax or concept problem knowing architecture
+would help. for example ... jdbctemplate.. 
+
+4.1 we have a problem in DAO
+4.2 our project or our approach should be work on DAO only and not touch service
+or controller ... 
+
+5. lot of things may look at totally useless, for example configuring a servlet.
+what is a servlet.. but practically this would help to atleast understand what we
+are doing in web applications especially in java world..
+
+when we use any web based framework in java world
+we have to configure the front controller ( Servlet .. ServletFilter) we dont need to code.
+flow..
+
+5.1 request has to start.
+5.2 request reaches front controller.
+5.3 we reach controller function based on some unique identifier..
+
+intent matters.. we have 5 member team.. all the 5 members dont need
+to Research and Destruction in terms of hwo to configrue the servlet
+they could been provided a ready made project whre servlet is already configured.
+ 
+
+if any web application in java world front controller needs to be configured..
+who will do it
+
+1. spring -- programmer has to do it, only once..
+2. spring boot - preconfigured..
+
+
+I am doing some employee scneario i have a function called Q.
+where we reading complete employee details from the http request.
+we should know that this Q function is present in some Controller.
+
+
+database adventures, welcome to the land of "too many opinions"                                       ok we can learn this.. but here what we need to is find out from the team
+what is our project approach towards assuming we are not starting database
+today only.. in the project..
+
+
+
+basics..
+
+1. we had a DAO.
+2.we asked spring to wire jdbc template object into the DAO
+3. what 1 and 2 means is spring must have DAo object and spring must have jdbc
+template object with it.
+4. we are using embedded database .. spring has an opinion on how to deal with it
+we just saw one such syntax.
+
+in case project is using spring jdbctemplate, how is jdbctemplate coming
+to know about which database it needs to interact with.. by looking at
+what Datasource object it corresponds to..
+
+
+ever since time in memorial to read properties file
+ResourceBundle in core java..
+what spring tells no I have an opinion on how to read ok spring tell me..
+
+
+
+JDBC
+1. we use in DAO layer
+2. we are talking to database from java world.. ( is jdbc only way or other options
+available.. JPA ) level of abstraction is higher in jpa when compared to jdbc..
+
+in typical dao
+1. move things from model to database.   insert, update
+2. move things from database to model  -- select command..
+why write lines of code                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+jdbc template..
+
+standard project song.. hey i will keep changing..
+
+1. you have sql with parameters ie you will see ?
+2. count  the question marks from left to right
+insert into emp(empno, empname,deptid) values ( ?,?,?)
+
+3. create anobject array and ensure size of array matches the number of ?
+
+Object fillupQuestionMarks[]= {5,"hello", 4 } ;//consciousness knowing what data types
+
+4. call jdbc template non static functions.. update..
+in case of update or delete handle the where condition failure logically it wont
+result in an exception.
+
+-----------------------------------------
+
+select command..
+
+1. you have sql with parameters ie you will see ?
+2. count  the question marks from left to right
+select empno, empname,deptid from emp where empno =?
+3. view all accounts in the table..
+
+3. create anobject array and ensure size of array matches the number of ?
+
+Object fillupQuestionMarks[]= { 4 } ;//consciousness knowing what data types
+ 
+4. cursor.... ResultSet 
+spring opinion... interface called RowMapper.
+what does it, helps you mapping each row in the cursor to an object of Model.
+
+BeanPropertyRowMapper<User>
+                bpm =new BeanPropertyRowMapper<User>(User.class);
+
+single select query on primary key..
+p = jdbcTemplate.queryForObject(sql, params,bpm);
+
+Multiple select query on non primary key
+
+List<User> l  = jdbcTemplate.query(sql,bpm);
+
+
+do you get an idea how to do.. 
+insert
+update command.
+single select
+multi select command.
+
+after knowing everything.. simple things like where to create variable
+and what scope will become very important..
+
+we have account 
+
+1. we have to get account details ( acno, balance, pin) if given an accno.
+2. we have to have a mechanism to update balance if given an accountno and pin.
+
+BeanPropertyRowMapper<User>
+                bpm =new BeanPropertyRowMapper<User>(User.class);
+Object params[]= {  }
+User user =jdbcTemplate.queryForObject(sql, params,bpm);
+
+service.
+DAO
+using h2 embedded database..
+
+try to build service and dao..
+
+
+
+
+
+typicaly we want to have some configuration file for a project.
+configuration file we have multiple options .properties, .xml , .json, ....
+if you want configure something you can ue the properties file..
+
+
+
+
+
+
+
+
+
+
+
+we will take a break and join back at 16.20
+
+
+
+
+
+
+
+
+
+
+
+
+idea of so called asssingment
+
+1. interaface design matters.
+2. architecture
+3. focus on creation of objects and wiring
+4. data type usage. of jdbc template.
+
+
+I want to code web. question to him.
+
+1. are you clear about the Service function inputs arguments
+and return type, input argument and return type obviously
+we are talking about Models.
+
+2. I have dont anything in DAO that is ok.. service clarity has to be 5/5 
+before we start web.
+
+3. web -- what for  -- web for presentation, web as a wrapper for your servcie layer.
+
+web for servcie layer should be prioitized over web for presentation.
+
+web for presentation, spring framework not much relevant in todays world
+becuase boss in web based presnetation is javascript so most of times
+we land up using javascript frameworks rather than java frameworks for web application
+for presentation.
+
+story telescope usage creates lot of mess in project than microscope usage.
+  
+we will focus on web as wrapper for the servcie layer..
+
+we have a service function.. and we cannot call it from http.. becuase we have
+not put a wrapper of http on it..
+
+
+web service is super set word..
+web services  ==http wrapper on service function ( crude answer but still ok)
+
+focus is now on understanding the controller how it looks like for a web service.
+
+
+
+
+if function f1, takes input of X type and return Y type. it is understood
+the caller of f1 also needs to have X type and Y type. do you agree.
+agree that is basic...
+JSON..
+
+
+
+
+
+
+JSON is a standard to represent variables..
+when do you get variables 
+when we talk about input and output for functions..
+json... variables..  input , output..
+in every programming langauge you get libraries...
+
+we have X programming langauge..
+X object into  JSON string.
+JSON string into an X Object.
+
+
+
+
+
+
+
+when we talk about web services.
+
+1. knowing json as format for representing variables is a must..
+2. framework used on the presentation, as well as the service layer also.
+3. intent is to ensure service function can be called from any kind of presentation..
+4. service layer functions bring revenue to the company..
+
+
+web -- usually another name for it "slow"
+
+
+if we dont know what is input required for our service function
+and what does the servie function return.
+then we cannot write any web services function..
+
+
+
+
+
+I want to write web service..
+
+
+1. being clear about input and output required by service function is the base.
+2. dont link your web service function service, practice controller function
+where we will focus on two things..
+2.1 are we able to pick input from the http request.
+2.2 send some mock data as output from your controller function
+see whether it reaches the client..
+if we can do 2 correcxtly that means we have written the web service.. 
+
+
+if people build service function dao function in core java. --phase 1
+web service function without linking up with service   -- phase 2.
+link web service with your real serivce -- phase
+
+clubbing all phases into single step. means entertainment...
+
+request   -- we pick parameters via three modes..
+query parameter 
+getEmployeeDetails?empno=23
+
+path variable.
+getEmployeeDetails/23
+
+from the requestbody we will pull out content.
+
+response  -- different classes in spring to indicate this..
+ 
+1. http status code
+2. information..
+some freak people will send only information also nothing wrong..
+                                          
+
+
+
+what is controller.
+what are we allowing people to access our service function via controllers.
+what is json.
+controller function... http request processing functions..
+returning...
+http status + our information.
+
+when we talk about any web in spring..then our fate is to configure
+the spring for front controller and prove request starts and response comes..
+very boring thing.. spring has got opinions depending on the version..
+
+in real life we have this problem , we want to work on X, X needs Y, we dont
+know Y.. challenge is to learn Y with intent to solve X and not do phd on Y
+and forget X.
+
+X is web service
+Y is spring boot..
+
+
+
+Spring boot ... 
+1. it makes spring easier...,  spring boot abstracts spring.
+
+ok you told "easier" what is meaning of it...
+1. spring boot looks at the classpath and sees what kind of classes we have put
+based on that does some automatic configurations for us , hopefully this is making
+things simpler when compared to using only spring..
+give an example ok...
+if we are doing spring with jdbc.. jdbctemplate object is created by us.
+if we are doing spring boot with jdbc, jdbc template object is automatically created
+by spring boot and our job is only to wire it..
+how did spring boot know jdbc template object needs to be creaetd, spring boot
+saw in the classpath that we are using springboot-jdbc starter...                                                                                                                                                                                   2. if we were using spring, tomcat needs needs to be configured by us
+in spring boot it is already configured..
+
+3. in all spring boot applciations you will see public static void main..
+and that is what we start with ... @springBootApplicatin annotation..
+this annotation will used along with a class called SpringApplication.                                                                    
+
+if we are using anntation called X given by Y in our code. will our
+code use some function of Y or not?
+                                                                                                                                                                                                                                                                                                                                        
+
+
+ok how do we recognize a spring boot project..
+1. open pom.xml files and look at dependancies.. 
+
+
+
+
+for any technology X, it is important
+
+1. to know official website.
+2. to read guides ( text books I am zero in X technology guide is starting point)
+3. documentation ( get clarification on something )( 3 is  never the starting point)
+
+we can write core java programs by using spring boot , in case we have a myth
+that we have to write only web based applciations using spring boot notion is wrong..
+
+
+
+<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+
+
+
+
+
+
+
+
+how come greeting class object got converted in this string,framework
+took care of it..
+
+{
+    "id": 1,
+    "content": "Hello, abc!"
+}
+this is json string...
+
+
+moral of the story
+when we write controller function
+
+
+1. just prove input can be read from http request.
+2. just prove output returned by functxion reaches the client as  http response.
+
+we are in controller funtion
+
+1. dont link servcie with controller.
+2. dont link service with controller
+3. let service remain peaceful in core java spring..
+4. controller function...
+focus on getting input from http
+you want to return something via response of http. 
+response ... only data. that is ok
+somebody comes tells no i dont want this, i want consistancy to be followed.
+since it is http
+i expect always httpstatuscode + information.
+what is this called in spring framework ResponseEntity it can wrap
+http status + some data of ours..
+
+I have a lot of doubts on controller ok clariy all your doubts on controller
+by focussing on controller function without it being linked to the service..
+
+importance of isolating the problem at the correct layer and ability
+to write the program that runs only that layer.. is a good skill to have..
+to debug
+
+
+there is  annotation called @REquestBody how do i know what it is..
+
+1. which layer of architecture does it fit in..
+1.1 controller
+1.2 do a  proof of concept only controller zero service, zero dao...all it needs
+just a new package in the same project..
+
+
+
+
+
+
+
+
+summary is
+
+1. service functions and models are the boss always..
+2. then we can go to controller or to DAO choice is for us..
+we are in step 2 prove step1 is read only... and changes are not happening..
+
+
+
+i will complete service, controller and then come to dao perfectly fine..
+i will complete service, dao and then controller perfectly fine.
+
+I will start with dao or controller and then come to service.. ok big time funeral waiting.
+
+
+
+people who trivalize security to only technology  and not process+ technology
+will have entertainment..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                       
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

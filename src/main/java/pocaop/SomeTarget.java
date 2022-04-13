@@ -11,7 +11,7 @@ public class SomeTarget {
         System.out.println("object created");
     }
 
-    public void testDB()
+    public void testSomething()
     {
         System.out.println("db action at work");
     }

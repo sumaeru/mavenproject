@@ -1,0 +1,50 @@
+let xyz= {x:$("#empnumber").val()};
+		
+	 
+	 	let connect={
+		type:"get",
+		dataType:"text",
+		url:"http://localhost:7777/getemployeedetail",
+		data:xyz,
+		success:function(ins)
+		{
+			alert("success" + ins);
+		},
+		error:function(err)
+		{
+			alert("failure" + JSON.stringify(err));
+		} };
+		$.ajax(connect);
+	
+	
+	
+	-----------------------
+	
+	post method...
+	
+		let xyz= {empno:1,mobileNo:4};
+		
+	 
+	 	let connect={
+		type:"post",
+		dataType:"text",
+		url:"http://localhost:7777/updateemp",
+		contentType: "application/json",
+		data:JSON.stringify(xyz),
+		success:function(ins)
+		{
+			alert("success" + ins);
+		},
+		error:function(err)
+		{
+			alert("failure" + JSON.stringify(err));
+		} };
+		$.ajax(connect);
+	
+	
+	
+	});
+	
+	
+	
+	

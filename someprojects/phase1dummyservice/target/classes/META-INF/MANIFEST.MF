@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: phase1dummyservice
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: vasul
+Implementation-Vendor-Id: stepbystep
+Build-Jdk: 1.8.0_31
+Implementation-URL: https://spring.io/projects/spring-boot/phase1dummy
+ service
+Created-By: Maven Integration for Eclipse
+

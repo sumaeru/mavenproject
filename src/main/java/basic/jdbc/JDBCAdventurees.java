@@ -1,12 +1,21 @@
 package basic.jdbc;
 
+import basic.spring.Country;
 import org.apache.derby.jdbc.ClientDriver;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCAdventurees {
 
     public static void main(String[] args) {
+
+
+
+
+
+/*
 
 
         try {
@@ -27,7 +36,7 @@ public class JDBCAdventurees {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
+*/
 
 
 
@@ -43,7 +52,7 @@ public class JDBCAdventurees {
 
             Connection con = DriverManager.getConnection(url,username,password);
             System.out.println("connection got");
-                /*
+
             String sql ="create table country(pincode integer primary key,area varchar(15), city varchar(15))";
             PreparedStatement  stmt = con.prepareStatement(sql);
             stmt.execute();
@@ -60,6 +69,7 @@ public class JDBCAdventurees {
             //update scenario
 
             sql = "update country set area=? , city=? where pincode =?";
+
             String area="abc";
             String city ="def";
             int pin = 15;
@@ -72,17 +82,22 @@ public class JDBCAdventurees {
                 System.out.println("updated ");
             else
                 System.out.println("no pin found");
-            stmt.close();
+
+                 stmt.close();
 
             //select all
             sql = "select pincode,area,city from country";
             stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
+            List<Country> listofAreas = new ArrayList<>();
+            Country country = null;
             while(rs.next())
             {
                 pin = rs.getInt("pincode");
                 area = rs.getString("area");
                 city = rs.getString("city");
+                country =new Country(pin,area,city);
+                listofAreas.add(country);
                 System.out.println(pin  + "  " + area  + "" + city);
 
 
@@ -94,7 +109,7 @@ public class JDBCAdventurees {
 
             //single select
             sql = "select pincode,area,city from country where pincode =?";
-            pin =185;
+            pin =15;
             stmt = con.prepareStatement(sql);
             stmt.setInt(1,pin);
              rs = stmt.executeQuery();
@@ -103,7 +118,7 @@ public class JDBCAdventurees {
                 pin = rs.getInt("pincode");
                 area = rs.getString("area");
                 city = rs.getString("city");
-                System.out.println(pin  + "  " + area  + "" + city);
+                System.out.println("Found " + pin  + "  " + area  + "" + city);
 
 
 
@@ -116,7 +131,7 @@ public class JDBCAdventurees {
 
             stmt.close();
 
-              */
+
 
             con.close();
 

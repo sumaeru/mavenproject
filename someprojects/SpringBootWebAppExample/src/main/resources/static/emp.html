@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+
+$(function(){
+
+$("#empnumber").blur(function()
+
+	{
+	
+	//input how we decided by looking aservice
+	let xyz= {x:$("#empnumber").val()};
+		
+	 
+	//jquery opinion on using .ajax function
+	 	let freak={
+		type:"get",
+		dataType:"json",
+		url:"http://localhost:8888/getemployeedetail",
+		data:xyz,
+		success:function(ins)
+		{
+			if(ins.empno == 0)
+			{
+			
+			$("#mobileno").val(0);
+			$("#message").html("emp no not found");
+			}
+			else
+			{
+			$("#mobileno").val(ins.mobileNo);
+			$("#message").html("emp no found");
+			}
+		},
+		error:function(err)
+		{
+			console.log("failure" + JSON.stringify(err));
+		} };
+		$.ajax(freak);
+	
+	
+	
+	});
+	
+	
+	
+	//b1
+	$("#b1").click(function(){
+	
+	
+			//let input= {empno:$("#empnumber").val(), mobileNo:$("#mobileno").val()};
+		
+		let input= {empno:$("#empnumber").val(), mobileNo:$("#mobileno").val()};
+		//let input= {empno:11, mobileNo:8};
+			
+			let dataforserver={
+			type:"post",
+		dataType:"json",
+		contentType: "application/json",
+		url:"http://localhost:7777/updateemp",
+		data:JSON.stringify(input),
+		success:function(x) {  
+			
+			if(x==true)
+			{
+			$("#message").html("updated");
+			}
+			else
+			{
+			$("#message").html("not updated");
+			}
+			$("#empnumber").val(0);
+			$("#mobileno").val(0)
+	
+		
+		},
+		error:function(x) { 
+			alert("failure " + JSON.stringify(x));
+			}
+			
+			
+			};
+			
+			$.ajax(dataforserver);
+			
+			
+			
+			
+			
+			
+			
+			
+	
+	});
+
+	
+});
+
+
+function f1()
+{
+	
+	
+	}
+
+</script>
+
+
+</head>
+<body>
+<Br/><h1> employee detail scenario</h1>
+
+<Br/> employee number
+<input type="text" id="empnumber"/>
+<span id="message" > what happened</span>
+
+<Br/> mobile number
+<input type="text" id="mobileno"/>
+
+
+<Br/><button id="b1" > update </button>
+
+
+</body>
+</html>

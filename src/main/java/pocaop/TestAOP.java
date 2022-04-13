@@ -14,7 +14,7 @@ public class TestAOP {
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(TestAOP.class);
         SomeTarget someTarget = applicationContext.getBean(SomeTarget.class);
-        someTarget.testDB();
+        someTarget.testSomething();
         someTarget.nonDB();
         /*
         SomeTarget someTarget =new SomeTarget();

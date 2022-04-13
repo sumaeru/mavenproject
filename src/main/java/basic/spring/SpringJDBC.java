@@ -22,6 +22,9 @@ public class SpringJDBC {
 
         @Value("${driverClassName}")
         private String driverClassName;
+
+
+
         @Value("${url}")
         private String url;
         @Value("${username}")
@@ -99,6 +102,8 @@ public class SpringJDBC {
         springJDBCPOC.check();
         springJDBCPOC.add();
         springJDBCPOC.viewAll();
+        springJDBCPOC.update();
+
         springJDBCPOC.viewParticular();
 
 

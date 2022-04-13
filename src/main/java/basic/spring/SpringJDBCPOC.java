@@ -82,4 +82,18 @@ public class SpringJDBCPOC {
 
 
     }
+
+    public void update() {
+
+
+        String sql ="update country1 set   area=?, city=? where pincode=?";
+        Object[] params= {"afdo","cfdo",23};
+        int ra= jdbcTemplate.update(sql,params);
+        if(ra > 0)
+            System.out.println("update working");
+        else
+            System.out.println("update failed");
+
+
+    }
 }
